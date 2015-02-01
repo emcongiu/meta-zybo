@@ -4,7 +4,7 @@ LICENSE = "GPLv2+"
 
 DIGILENT_EXTENSION = "-digilent"
 
-SRC_URI = "git://github.com/DigilentInc/u-boot-Digilent-Dev.git;protocol=https"
+SRC_URI = "git://github.com/DigilentInc/u-boot-Digilent-Dev.git;protocol=https;branch=master-next"
 
 S = "${WORKDIR}/git"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
