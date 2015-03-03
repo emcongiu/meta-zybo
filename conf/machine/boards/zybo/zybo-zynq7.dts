@@ -2,4 +2,25 @@
 /include/ "zynq7-base.dtsi"
 /include/ "zybo-zynq7-board.dtsi"
 / {
+	leds {
+		compatible = "gpio-leds";
+		heartbeat {
+			label = "Kernel status";
+			linux,default-trigger = "heartbeat";
+			gpios = <&ps7_gpio_0 7 0>;
+		} ;
+	} ;
+	gpio-keys {
+		compatible = "gpio-keys";
+		enter-key {
+			label = "Enter key";
+			gpios = <&ps7_gpio_0 50 0>;
+			linux,code = <28>;
+		};
+		esc-key {
+			label = "Esc key";
+			gpios = <&ps7_gpio_0 51 0>;
+			linux,code = <1>;
+		};
+	} ;
 } ;
