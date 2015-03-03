@@ -4,23 +4,23 @@
 / {
 	leds {
 		compatible = "gpio-leds";
-		heartbeat {
-			label = "Kernel status";
+		ld4 {
+			label = "ld4";
 			linux,default-trigger = "heartbeat";
 			gpios = <&ps7_gpio_0 7 0>;
 		} ;
 	} ;
 	gpio-keys {
 		compatible = "gpio-keys";
-		enter-key {
-			label = "Enter key";
+		btn4 {
+			label = "btn4";
 			gpios = <&ps7_gpio_0 50 0>;
-			linux,code = <28>;
+			linux,code = <28>; /* enter key */
 		};
-		esc-key {
-			label = "Esc key";
+		btn5 {
+			label = "btn5";
 			gpios = <&ps7_gpio_0 51 0>;
-			linux,code = <1>;
+			linux,code = <1>; /* esc key */
 		};
 	} ;
 } ;
