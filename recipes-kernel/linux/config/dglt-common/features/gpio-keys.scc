@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Enable GPIO Key Support"
+define KFEATURE_COMPATIBILITY board
+
+kconfig hardware gpio-keys.cfg
