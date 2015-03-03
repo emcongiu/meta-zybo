@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Kernel Config for Zybo specific setup"
+define KFEATURE_COMPATIBILITY board
+
+include features/led.scc
