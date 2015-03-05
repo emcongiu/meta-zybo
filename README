@@ -29,23 +29,29 @@ Dependencies
 
 This layer depends on:
 
-	URI: git://git.openembedded.org/bitbake
+	URI: git://git.yoctoproject.org/poky
 
-	URI: git://git.openembedded.org/openembedded-core
-	layers: meta
+	URI: git://git.yoctoproject.org/meta-xilinx
 
 Build Instructions
 ==================
 
-The following instructions require a Poky installation (or equivalent).
+The following instructions require a Poky 1.7 installation (or equivalent).
 
 Initialize a build using the 'oe-init-build-env' script in Poky. Once
 initialized configure bblayers.conf by adding the 'meta-zybo' layer. e.g.:
 
-	BBLAYERS ?= " \
-		<path to layer>/oe-core/meta \
-		<path to layer>/meta-zybo \
-		"
+  BBLAYERS ?= " \
+    /opt/poky/1.7.1/prj-zybo/meta \
+    /opt/poky/1.7.1/prj-zybo/meta-yocto \
+    /opt/poky/1.7.1/prj-zybo/meta-yocto-bsp \
+    /opt/poky/1.7.1/prj-zybo/meta-xilinx \
+    /opt/poky/1.7.1/prj-zybo/meta-zybo \
+    "
+  BBLAYERS_NON_REMOVABLE ?= " \
+    /opt/poky/1.7.1/prj-zybo/meta \
+    /opt/poky/1.7.1/prj-zybo/meta-yocto \
+    "
 
 To build a specific target BSP configure the associated machine in local.conf:
 
@@ -58,8 +64,21 @@ Build the target file system image using bitbake:
 Once complete the images for the target machine will be available in the output
 directory 'tmp/deploy/images'.
 
-Additional Documentation
-========================
+SD Card Boot
+============
 
-Additional documentation can be found in the 'docs/*' directory of this layer.
+Use an SD card with partition one of 32MB size in FAT16 format, and an additional partition
+for the root filesystem (formatted as EXT4).
 
+Copy the following to the SD card partition one:
+	* FSBL:         boot.bin
+	* U-boot:       u-boot.img
+	* Environment:  uEnv.txt
+	* Kernel:       uImage
+	* Devicetree:   zybo-zynq7.dtb
+
+Extract the following to the SD card partion two:
+	* Root FS:    core-image-minimal-zybo-zynq7.tar.gz
+
+Insert the SD Card, connect UART to terminal program and boot the board the
+board. (Ensure the board is configured via the MIO's for SD Boot).
