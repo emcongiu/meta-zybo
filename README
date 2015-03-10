@@ -13,6 +13,9 @@ information):
 Additional information on the MicroBlaze or Zynq architectures can be found at:
 	http://www.xilinx.com/support/index.htm
 
+A complete tutorial to deploy this layer on SD Card can be found at:
+        https://emcongiu.wordpress.com
+
 Maintainers, Patches/Submissions, Community
 ===========================================
 
